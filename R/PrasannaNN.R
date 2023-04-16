@@ -1,4 +1,5 @@
-
+library(R6)
+library(caret)
 PrasannaNeuralNetwork <- R6Class("PrasannaNeuralNetwork",
                          public = list(
                            X = NULL,  Y = NULL,
@@ -6,9 +7,9 @@ PrasannaNeuralNetwork <- R6Class("PrasannaNeuralNetwork",
                            output = NULL,
                            initialize = function(formula, hidden, data = list()) {
                              # Model and training data
-                             model <- model.frame(formula, data = data)
-                             self$X <- model.matrix(attr(model, 'terms'), data = model)
-                             self$Y <- model.response(model)
+                             mod <- model.frame(formula, data = data)
+                             self$X <- model.matrix(attr(mod, 'terms'), data = mod)
+                             self$Y <- model.response(mod)
 
                              # Dimensions
                              B1 <- ncol(self$X) # input dimensions (+ bias)
@@ -48,7 +49,7 @@ PrasannaNeuralNetwork <- R6Class("PrasannaNeuralNetwork",
                              pred <- apply(prob, 1, which.max)
                              levels(self$Y)[pred]
                            },
-                           compute_loss = function(probs = self$output) {
+                           compute_loss = function(prob = self$output) {
                              Y_id <- match(self$Y, sort(unique(self$Y)))
                              correct_logprob <- -log(prob[cbind(seq_along(Y_id), Y_id)])
                              sum(correct_logprob)
