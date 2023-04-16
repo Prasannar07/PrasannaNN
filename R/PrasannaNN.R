@@ -48,7 +48,7 @@ PrasannaNeuralNetwork <- R6Class("PrasannaNeuralNetwork",
                              pred <- apply(prob, 1, which.max)
                              levels(self$Y)[pred]
                            },
-                           compute_loss = function(probs = self$output) {
+                           compute_loss = function(prob = self$output) {
                              Y_id <- match(self$Y, sort(unique(self$Y)))
                              correct_logprob <- -log(prob[cbind(seq_along(Y_id), Y_id)])
                              sum(correct_logprob)
