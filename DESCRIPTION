@@ -1,0 +1,11 @@
+Package: PrasannaNN
+Type: Package
+Title: R6 class for training a neural network with backpropagation
+Version: 0.1.0
+Author: Prasanna Rodrigues
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: This R6 class implements a neural network with backpropagation for supervised learning tasks. It supports multiple hidden layers 
+      and can handle both binary and multi-class classification problems.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
