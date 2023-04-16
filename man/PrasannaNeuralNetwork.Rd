@@ -51,7 +51,7 @@ Other packages for neural network and machine learning in R include "neuralnet",
 ##-- Set up the model and train it on the iris dataset
 library(R6)
 data(iris)
-nn <- NeuralNetwork$new(Species ~ ., hidden = 5, data = iris)
+nn <- PrasannaNeuralNetwork$new(Species ~ ., hidden = 5, data = iris)
 nn$train(iterations = 1000, trace = 0.001, learn_rate = .001)
 
 ##-- Make predictions on new data
