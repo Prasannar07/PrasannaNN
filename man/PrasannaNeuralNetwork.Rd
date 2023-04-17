@@ -53,8 +53,6 @@ Other packages for neural network and machine learning in R include "neuralnet",
 library(caret)
 library(R6)
 
-Example 1
-
 data(iris)
 nn <- PrasannaNeuralNetwork$new(Species ~ ., hidden = 5, data = iris)
 tr <- nn$train(iterations = 1000, trace = 0.001, learn_rate = .001)
